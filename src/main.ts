@@ -1,6 +1,9 @@
 let input = <HTMLInputElement>document.getElementById('input1');
+let checkbox = <HTMLInputElement>document.getElementById('flexCheckDefault');
+input.oninput = update;
+checkbox.onclick = update;
 
-input.oninput = () => {
+function update() {
   let value = input.value;
   let arr = value.split('\n');
   let ans: Map<string, Array<string>> = new Map();
@@ -24,9 +27,22 @@ input.oninput = () => {
       ans.set(module, children);
     }
   }
+  if (checkbox.checked) {
+    let keys = Array.from(ans.keys());
+    keys.forEach((key) => {
+      let children = ans.get(key);
+      if (children === undefined) {
+        ans.delete(key);
+      } else {
+        children = children.filter((e) => keys.find((k) => k === e));
+        ans.set(key, children);
+      }
+    });
+  }
+
   let output = <HTMLInputElement>document.getElementById('output1');
   console.log(Object.fromEntries(ans));
   output.value = JSON.stringify(Object.fromEntries(ans));
-};
+}
 
 export {};
