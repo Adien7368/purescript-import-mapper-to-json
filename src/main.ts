@@ -1,6 +1,6 @@
 let input = <HTMLInputElement>document.getElementById('input1');
 
-input.oninput = (e) => {
+input.oninput = () => {
   let value = input.value;
   let arr = value.split('\n');
   let ans: Map<string, Array<string>> = new Map();
