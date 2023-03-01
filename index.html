@@ -11,8 +11,10 @@
   <body class="p-4">
     <div id="app">
       <div class="form-group">
-        <label for="input1">Enter Your Input here</label>
-        <textarea class="form-control" id="input1" rows="15"></textarea>
+        <label for="input1">Enter Your Input here</label><br>
+        <label for="input1">Use this command to generate input from your purescript project</label>
+        <code>grep -roE "^ *module *[^ ]*|^import *[^ (]*" ./src/**/*.purs </code>
+        <textarea class="form-control mt-3" id="input1" rows="15"></textarea>
       </div>
       <div class="form-group">
         <label for="output1">Output</label>
